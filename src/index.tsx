@@ -1,25 +1,25 @@
 import React from 'react'
-import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
+import ReactDOM from 'react-dom'
+import './index.css'
+// import App from './App'
 import { Era } from './Era'
 import map_yamaguchi from './Map'
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals'
 
 // Microsoft Fast
 import { 
   provideFASTDesignSystem, 
   fastCard, 
   fastButton
-} from '@microsoft/fast-components';
-import { provideReactWrapper } from '@microsoft/fast-react-wrapper';
+} from '@microsoft/fast-components'
+import { provideReactWrapper } from '@microsoft/fast-react-wrapper'
 
 const { wrap } = provideReactWrapper(
   React, 
   provideFASTDesignSystem()
-);
+)
 
-export const FastCard = wrap(fastCard());
+export const FastCard = wrap(fastCard())
 export const FastButton = wrap(fastButton())
 
 // 地図を描く
@@ -66,14 +66,16 @@ class Cov2 {
     return (
       <div className='container mt-3'>
         <h1 className='d-inline-block'>{this.pref}内の新型コロナ陽性者情報</h1>
-        <span className='ms-2 d-inline-block'><time className='me-1' dateTime={this.update_date}>{this.update_wareki}</time>更新</span>
+        <span className='ms-2 d-inline-block'>
+          <time className='me-1' dateTime={this.update_date}>{this.update_wareki}</time>更新
+        </span>
       </div>
     )
   }
 
   news() {
     return (
-      <FastCard className='container mt-2'>
+      <FastCard className='container'>
         <div className='mx-3 my-4'>
           <h2>最新のお知らせ</h2>
           <ul>
@@ -119,6 +121,8 @@ class Cov2 {
       <FastCard className='container'>
         <div className="mx-3 my-4">
           <h2>陽性者一覧</h2>
+          <h3>過去 30 日間の発生状況</h3>
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </FastCard>
     )
@@ -145,7 +149,7 @@ ReactDOM.render(cov2.title(), document.getElementById("page-title"))
 ReactDOM.render(cov2.map(), document.getElementById("pref-map"))
 ReactDOM.render(cov2.graph(), document.getElementById("graph"))
 
-var positive_persons_data = new XMLHttpRequest();
+var positive_persons_data = new XMLHttpRequest()
 
 positive_persons_data.addEventListener('load', () => {
   let json_data: string = positive_persons_data.response
@@ -170,10 +174,10 @@ positive_persons_data.addEventListener('load', () => {
     }
   }
   ReactDOM.render(ppem30, document.getElementById("ppem30"))
-});
-positive_persons_data.open('GET', 'https://blog.hikari-dev.com/cov2-data/positive_persons_each_municipality_30days.json');
-positive_persons_data.send();
+})
+positive_persons_data.open('GET', 'https://blog.hikari-dev.com/cov2-data/positive_persons_each_municipality_30days.json')
+positive_persons_data.send()
 
 console.log(cov2)
 
-reportWebVitals();
+reportWebVitals()
