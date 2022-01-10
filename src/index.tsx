@@ -8,9 +8,10 @@ import reportWebVitals from './reportWebVitals'
 
 // Microsoft Fast
 import { 
-  provideFASTDesignSystem, 
+  provideFASTDesignSystem,
   fastCard, 
-  fastButton
+  fastButton,
+  fastAvatar,
 } from '@microsoft/fast-components'
 import { provideReactWrapper } from '@microsoft/fast-react-wrapper'
 
@@ -21,6 +22,7 @@ const { wrap } = provideReactWrapper(
 
 export const FastCard = wrap(fastCard())
 export const FastButton = wrap(fastButton())
+export const FastAvater = wrap(fastAvatar())
 
 // 地図を描く
 class PrefMap extends React.Component<any, any> {
@@ -100,18 +102,9 @@ class Cov2 {
             <PrefMap pref={this.img_pref} />
           </div>
         </div>
-        <div className="mx-3 my-4">
-          <table className="table table-dark">
-            <thead>
-              <tr>
-                <th scope="col">市町村</th>
-                <th scope="col" className='text-end'>陽性者数 (過去 30 日)</th>
-              </tr>
-            </thead>
-            <tbody id='ppem30'>
-            </tbody>
-          </table>
-        </div>
+        <div className="mx-3 my-4 container">
+          <div className='row row-cols-3' id='ppem30'></div>
+        </div>        
       </FastCard>
     )
   }
@@ -163,7 +156,12 @@ positive_persons_data.addEventListener('load', () => {
     if(element_city != null){
       // console.log(element_city)
       let num: number = obj_data[city]
-      ppem30.push(<tr><td>{city}</td><td className='text-end'>{obj_data[city]}</td></tr>)
+      ppem30.push(
+        <div className='px-1 py-1'>
+          <FastCard className='col px-2 py-2'>
+          <span>{city}&nbsp;<strong>{obj_data[city]}</strong></span>
+        </FastCard>
+      </div>)
       if(num === 0){
         element_city.style.fill = "#c4c4c4"
       }else{
