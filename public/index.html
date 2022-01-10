@@ -35,8 +35,12 @@ var plot_data_req = new XMLHttpRequest()
 plot_data_req.addEventListener('load', () => {
   let json_data = plot_data_req.response
   let obj_data = JSON.parse(json_data)
+  console.log(obj_data)
   let ctx = document.getElementById('myChart')
   new Chart(ctx.getContext('2d'), obj_data)
+  let dates = obj_data["data"]["labels"]
+  let update_date = dates[dates.length - 1]
+  
 })
 plot_data_req.open('GET', 'https://blog.hikari-dev.com/cov2-data/positive_persons_30days_chartjs.json')
 plot_data_req.send()

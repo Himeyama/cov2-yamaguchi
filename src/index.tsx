@@ -62,6 +62,7 @@ class Cov2 {
     this.update_date = date
     let today: Era = new Era(date)
     this.update_wareki = today.getWareki('和暦', false, 4)
+    ReactDOM.render(cov2.header(), document.getElementById("header"))
   }
 
   header() {
@@ -147,7 +148,6 @@ cov2.datetime = "2021-01-01"
 // 過去 30 日間の発生状況
 cov2.map_date_range = 30
 
-ReactDOM.render(cov2.header(), document.getElementById("header"))
 ReactDOM.render(cov2.news(), document.getElementById("news"))
 ReactDOM.render(cov2.title(), document.getElementById("page-title"))
 ReactDOM.render(cov2.map(), document.getElementById("pref-map"))
@@ -156,10 +156,10 @@ ReactDOM.render(cov2.posis30(), document.getElementById("posis30"))
 
 var positive_persons_data = new XMLHttpRequest()
 
+// マップのところ
 positive_persons_data.addEventListener('load', () => {
   let json_data: string = positive_persons_data.response
   let obj_data = JSON.parse(json_data)
-  console.log(obj_data)
   let cities: string[] = Object.keys(obj_data)
   let ppem30 = []
   for(const city of cities){
