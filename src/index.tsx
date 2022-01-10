@@ -98,13 +98,24 @@ class Cov2 {
         </div>
         <div className="mx-3 my-4">
           <h3>過去 {this.map_date_range} 日間の発生状況</h3>
+          <span>(30 日間の陽性者数 / 10 万人)</span>
           <div id="img-map" className='d-inline-block mt-4'>
             <PrefMap pref={this.img_pref} />
           </div>
-        </div>
-        <div className="mx-3 my-4 container">
-          <div className='row row-cols-3' id='ppem30'></div>
         </div>        
+      </FastCard>
+    )
+  }
+
+  posis30() {
+    return (
+      <FastCard className='container mt-4'>
+        <div className="container my-4">
+          <h2>過去 {this.map_date_range} 日間の陽性者数</h2>
+        </div>
+        <div className="container my-4">
+          <div className='row row-cols-2' id='ppem30'></div>
+        </div>
       </FastCard>
     )
   }
@@ -114,7 +125,7 @@ class Cov2 {
       <FastCard className='container'>
         <div className="mx-3 my-4">
           <h2>陽性者一覧</h2>
-          <h3>過去 30 日間の発生状況</h3>
+          <h3>過去 {this.map_date_range} 日間の発生状況</h3>
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </FastCard>
@@ -141,6 +152,7 @@ ReactDOM.render(cov2.news(), document.getElementById("news"))
 ReactDOM.render(cov2.title(), document.getElementById("page-title"))
 ReactDOM.render(cov2.map(), document.getElementById("pref-map"))
 ReactDOM.render(cov2.graph(), document.getElementById("graph"))
+ReactDOM.render(cov2.posis30(), document.getElementById("posis30"))
 
 var positive_persons_data = new XMLHttpRequest()
 

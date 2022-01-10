@@ -20,7 +20,10 @@
   <section id="news" class='container mt-3'></section>
   <div class='container'>
     <div class='row row-col-auto'>
-      <section id="pref-map" class='col-md-6 mt-4'></section>
+      <div class='col-md-6 mt-4'>
+        <section id="pref-map"></section>
+        <section id='posis30'></section>
+      </div>
       <section id="graph" class='col-md-6 mt-4'></section>
     </div>
   </div>
@@ -38,11 +41,5 @@ plot_data_req.addEventListener('load', () => {
 plot_data_req.open('GET', 'https://blog.hikari-dev.com/cov2-data/positive_persons_30days_chartjs.json')
 plot_data_req.send()
 </script>
-
-<style>
-fast-avatar {
-  --avatar-fill-accent-primary: #cf4073;
-}
-</style>
 
 </html>
