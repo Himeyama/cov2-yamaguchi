@@ -177,7 +177,7 @@ positive_persons_data.addEventListener('load', () => {
       if(num === 0){
         element_city.style.fill = "#c4c4c4"
       }else{
-        let color_idx = parseInt(((num-1)/50).toString())
+        let color_idx = parseInt(((num-1)/100).toString())
         element_city.style.fill = colors[color_idx]
         element_city.style.stroke = colors[color_idx]
       }
