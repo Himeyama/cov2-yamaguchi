@@ -185,7 +185,7 @@ positive_persons_data.addEventListener('load', () => {
   }
   ReactDOM.render(ppem30, document.getElementById("ppem30"))
 })
-positive_persons_data.open('GET', 'https://blog.hikari-dev.com/cov2-data/positive_persons_each_municipality_30days_100K.json')
+positive_persons_data.open('GET', 'https://hikari-dev.com/cov2-data/positive_persons_each_municipality_30days_100K.json')
 positive_persons_data.send()
 
 console.log(cov2)
