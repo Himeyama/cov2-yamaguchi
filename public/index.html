@@ -12,6 +12,20 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <div id="page-title"></div>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+  <!-- Automatically render math in text elements -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"></script>
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left: "$$", right: "$$", display: true},
+        {left: "$", right: "$", display: false},
+      ]
+    });
+  });
+  </script>
 </head>
 
 <body>
@@ -19,13 +33,9 @@
   <header id="header" class='mt-2'></header>
   <section id="news" class='container mt-3'></section>
   <div class='container'>
-    <div class='row row-col-auto'>
-      <div class='col-md-6 mt-4'>
-        <section id="pref-map"></section>
-        <section id='posis30'></section>
-      </div>
-      <section id="graph" class='col-md-6 mt-4'></section>
-    </div>
+    <section id='pref-map' class='mt-3'></section>
+    <section id='posis30' class='mt-3 '></section>
+    <section id='graph' class='mt-3'></section>
   </div>
 </body>
 
@@ -40,7 +50,6 @@ plot_data_req.addEventListener('load', () => {
   new Chart(ctx.getContext('2d'), obj_data)
   let dates = obj_data["data"]["labels"]
   let update_date = dates[dates.length - 1]
-  
 })
 plot_data_req.open('GET', 'https://www.hikari-dev.com/cov2-yamaguchi-data/chartjs_data.json')
 plot_data_req.send()
