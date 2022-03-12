@@ -65,7 +65,7 @@ positive_persons_data.addEventListener('load', () => {
   }
   ReactDOM.render(ppem30, document.getElementById("ppem30"))
 })
-positive_persons_data.open('GET', 'https://www.hikari-dev.com/cov2-yamaguchi-data/datacities30days.json')
+positive_persons_data.open('GET', 'https://himeyama.github.io/cov2-yamaguchi-data/datacities30days.json')
 positive_persons_data.send()
 
 console.log(cov)
